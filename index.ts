@@ -36,6 +36,9 @@ export function getInstanceIdFromShinyId({
     separator = '_'
 }: GetInstanceFromShinyIdParams) {
     const [, base62Id] = id.split(separator)
+    if (!base62Id) {
+        throw new Error('Invalid ID format')
+    }
     const snowflakeId = base62.decodeBigInt(base62Id)
     return Snowflake.instanceIDFromID(snowflakeId)
 }
@@ -51,6 +54,9 @@ export function getTimestampFromShinyId({
     separator = '_'
 }: GetTimestampFromShinyIdParams) {
     const [, base62Id] = id.split(separator)
+    if (!base62Id) {
+        throw new Error('Invalid ID format')
+    }
     const snowflakeId = base62.decodeBigInt(base62Id)
     return Snowflake.timestampFromID(snowflakeId, epoch)
 }
