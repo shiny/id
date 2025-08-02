@@ -1,5 +1,7 @@
 # @shiny/id
 
+[![test](https://github.com/shiny/id/actions/workflows/test.yml/badge.svg)](https://github.com/shiny/id/actions/workflows/test.yml)
+
 Generate Stripe-style Snowflake IDs. For why you might want to do this, refer to this article: [Designing APIs for humans: Object IDs](https://dev.to/stripe/designing-apis-for-humans-object-ids-3o5a)
 
 > [!CAUTION]
