@@ -4,12 +4,19 @@
   "repository": {
     "url": "https://github.com/shiny/id"
   },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p ."
+  },
   "dependencies": {
     "@sindresorhus/base62": "^0.1.0",
     "nodejs-snowflake": "^2.0.1"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.19"
+    "@types/bun": "^1.2.19",
+    "typescript": "^5.9.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "module": "index.ts",
+  "type": "module"
 }
