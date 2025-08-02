@@ -22,14 +22,14 @@ const id = generateShinyId({
 // Output example: usr_8lUf4MDxgEy
 ```
 
-底层实现：使用 nodejs-snowflake 生成一个 bigint 的 snowflake，转换成 base62 格式，并添加用户自定义的 prefix。
-注意：理论上每秒最多生成 1,024,000 个 ID，天生是 block 的。
-
+Underlying implementation: Uses nodejs-snowflake to generate a bigint snowflake, converts it to base62 format, and adds a user-defined prefix.
+Note: Theoretically generates up to 1,024,000 IDs per second, naturally blocking.
 
 ## Custom Epoch
 
-使用 Custom Epoch，而不是默认的 1970 年，你生成的 id 将会更简短。
-例如我现在测试， epoch 为默认的 0，生成的 id 为 `usr_8lUf4MDxgEy`；而 epoch 为 当前时间，生成的 id 为 `usr_yM0lunVA`，少了 3 位。
+Using a Custom Epoch instead of the default 1970 will make your generated IDs shorter.
+For example, in my current test, with epoch set to default 0, the generated ID is `usr_8lUf4MDxgEy`; while with epoch set to current time, the generated ID is `usr_yM0lunVA`, which is 3 characters shorter.
+
 ```typescript
 import { generateShinyId } from '@shiny/id'
 
@@ -42,7 +42,8 @@ const id = generateShinyId({
 
 ## Custom Separator
 
-默认的分隔符为 `_`，因为鼠标双击这样的 id 会自动选中文本 —— 而 `-` 则不行。你可以自定义分隔符。
+The default separator is `_`, because double-clicking such an ID will automatically select the text — while `-` does not. You can customize the separator.
+
 ```typescript
 import { generateShinyId } from '@shiny/id'
 
@@ -53,8 +54,9 @@ const id = generateShinyId({
 ```
 
 ## Instance ID
-由于单机的生成 Snowflake 的速度 ，多个 instance ID 适合分布式生成 ID。
-instanceId 的范围是 0 - 4095，未设置时则是随机数字。
+
+Due to the speed of single-machine Snowflake generation, multiple instance IDs are suitable for distributed ID generation.
+The instanceId range is 0 - 4095, and when not set, it defaults to a random number.
 
 ```typescript
 import { generateShinyId } from '@shiny/id'
