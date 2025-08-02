@@ -7,7 +7,6 @@ test("generateShinyId", () => {
     const id = generateShinyId({
         prefix: 'usr',
     })
-    console.log(id)
     expect(id).toStartWith('usr_')
     expect(id).not.toBeEmpty()
 });
@@ -25,7 +24,6 @@ test('generateShinyId with custom epoch', () => {
         prefix: 'usr',
         epoch: customEpoch
     })
-    console.log(id)
     expect(id).toStartWith('usr_')
 })
 
