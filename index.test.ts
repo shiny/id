@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 
-import { generateShinyId, getInstanceIdFromShinyId, getTimestampFromShinyId } from './index'
+import { generateShinyId, getInstanceIdFromShinyId, getRawNumberFromShinyId, getTimestampFromShinyId } from './index'
 
 
 test("generateShinyId", () => {
@@ -11,6 +11,13 @@ test("generateShinyId", () => {
     expect(id).toStartWith('usr_')
     expect(id).not.toBeEmpty()
 });
+
+test("getRawNumberFromShinyId", () => {
+    const id = getRawNumberFromShinyId({
+        id: 'usr_8lUgrzfoiFE'
+    })
+    expect(id).toBe(7357339172516621312n)
+})
 
 test('generateShinyId with custom epoch', () => {
     const customEpoch = 1754074255256

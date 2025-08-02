@@ -2,7 +2,7 @@
 
 [![test](https://github.com/shiny/id/actions/workflows/test.yml/badge.svg)](https://github.com/shiny/id/actions/workflows/test.yml)
 
-Generate Stripe-style Snowflake IDs. For why you might want to do this, refer to this article: [Designing APIs for humans: Object IDs](https://dev.to/stripe/designing-apis-for-humans-object-ids-3o5a)
+Generate Stripe-style Snowflake IDs. For why you might want to do this, refer to this article: [Designing APIs for humans: Object IDs](https://dev.to/stripe/designing-apis-for-humans-object-ids-3o5a).
 
 > [!CAUTION]
 > Currently in preview stage, please use with caution
@@ -26,6 +26,9 @@ const id = generateShinyId({
 
 Underlying implementation: Uses nodejs-snowflake to generate a bigint snowflake, converts it to base62 format, and adds a user-defined prefix.
 Note: Theoretically generates up to 1,024,000 IDs per second, naturally blocking.
+
+> [!IMPORTANT]
+> This character format ID cannot be sorted correctly in the database. You can also store the original snowflake bigint value as the ID in the database and display the base62 format ID on the user side, e.g. `getRawNumberFromShinyId('usr_8lUf4MDxgEy')`
 
 ## Custom Epoch
 

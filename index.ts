@@ -60,3 +60,13 @@ export function getTimestampFromShinyId({
     const snowflakeId = base62.decodeBigInt(base62Id)
     return Snowflake.timestampFromID(snowflakeId, epoch)
 }
+export function getRawNumberFromShinyId({
+    id,
+    separator = '_'
+}: GetInstanceFromShinyIdParams) {
+    const [, base62Id] = id.split(separator)
+    if (!base62Id) {
+        throw new Error('Invalid ID format')
+    }
+    return base62.decodeBigInt(base62Id)
+}
